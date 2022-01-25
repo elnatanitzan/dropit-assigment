@@ -48,7 +48,6 @@ const rootReducer = (state:any = init, action: any) => {
         }
         
         default:
-            // console.log(state);
             return state;   
     }
 }
