@@ -1,12 +1,14 @@
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useState, useMemo } from "react";
+import { useSelector } from 'react-redux';
 
-import { API } from "../../contexts/api";
 import { CatalogProduct } from "../product/types";
 import useFlag from "../../tools/hooks/useFlag";
 
 import useCatalogTable from "./useCatalogTable";
 
 const useCatalog = () => {
+
+  const productsFromReducer = useSelector((state: any) => state.catalog.products)
   const [products, setProducts] = useState<CatalogProduct[]>([])
   const [isLoading, onStartLoading, onEndLoading] = useFlag(true);
 
@@ -20,11 +22,11 @@ const useCatalog = () => {
     onAddItem: handleAddProductToCart,
   });
 
-  useEffect(
+  useMemo(
     () => {
-      API.product.getAll().then(setProducts).finally(onEndLoading);
-    },
-    []// eslint-disable-line
+      setProducts(productsFromReducer);
+      onEndLoading()
+    },[productsFromReducer, onEndLoading]
     );
 
   return {

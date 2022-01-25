@@ -1,38 +1,28 @@
-import React, {useState, useEffect, useMemo, useReducer} from "react";
-
+import { useState, useMemo} from "react";
+import {useSelector} from "react-redux";
 import { LoadingSpinner, Table } from "../../tools/ui_components";
-import rootReducer from "../../reducers/root.reducer"
-import { CatalogProduct} from "../product/types";
 
 import StyledCatalogView from "./StyledCatalogView";
 import SelectInput from "../../tools/ui_components/SelectInput";
+import SearchInput from "../../tools/ui_components/SearchInput";
+import SortInput from "../../tools/ui_components/SortInput";
 import useCatalog from "./useCatalog";
 
 
 const CatalogView = () => {
 
-  const [state, dispatch] = useReducer(rootReducer, {})
+  const selectedCatalog = useSelector((state: any) => state.catalog.selectedCatalog)
+  const resultEmpty = useSelector((state: any) => state.catalog.noResult)
+  const resultInclude = useSelector((state: any) => state.catalog.resultInclude)
+
   const { isLoading, products, columns, getKeyRow } = useCatalog();
   
-  const [categoryToShow, setCategoryToShow] = useState<CatalogProduct[]>([]);
+  const [categoryToShow, setCategoryToShow] = useState([]);
   
-
-  useEffect(
-    () => {
-      console.log(state)
-      // setCategoryToShow(productsFromReducer.length > 0 ?  productsFromReducer : products)
-      // console.log(products)
-    },
-    [products, state]
-    // eslint-disable-line
-    );
-    
     useMemo(
       () => {
-        setCategoryToShow(products)
-        // setCategoryToShow(state.selectCategory ? state.selectCategory : products)
-      },
-      []// eslint-disable-line
+        if (selectedCatalog.length > 0) setCategoryToShow(selectedCatalog);
+      },[selectedCatalog]
     )
     
   return (
@@ -41,12 +31,27 @@ const CatalogView = () => {
         <div className="CatalogView__header_text">Catalog Page</div>
       </div>
 
-      <h2>Filter By Category</h2>
+      <div className="Filter__container">
       <SelectInput />
-      <div className="CatalogView__grid">
-        <Table columns={columns} data={categoryToShow} getKeyRow={getKeyRow} />
-       {/* <Table columns={columns} data={products} getKeyRow={getKeyRow} /> */}
+      <SearchInput />
+      <SortInput />
       </div>
+
+      {
+      resultEmpty === true ?
+       (<h3 className="ResultInfo red" >No result inclued `{resultInclude}` ...</h3>)
+      : (
+          <div className="CatalogView__grid">
+            
+            { (resultInclude !== '' && resultInclude !== ' ') && <h3 className="ResultInfo">Products that include `{resultInclude}`</h3>}
+            
+            {
+            selectedCatalog.length > 0 ? <Table columns={columns} data={categoryToShow} getKeyRow={getKeyRow} />
+            : <Table columns={columns} data={products} getKeyRow={getKeyRow} />
+            }
+          </div>
+        )
+      }
 
       <LoadingSpinner isVisible={isLoading} />
     </StyledCatalogView>

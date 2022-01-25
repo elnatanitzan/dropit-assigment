@@ -13,7 +13,19 @@ const StyledCatalogView = styled.div`
       font-weight: bold;
     }
   }
-
+  
+  .Filter__container {
+    display: flex;
+    justify-content: space-between;
+    margin: 48px 24px 0 24px;
+  }
+  
+  .ResultInfo {
+    text-align: center;
+    
+    &.red { color: red; }
+  }
+  
   .CatalogView__grid {
     margin: 24px;
 

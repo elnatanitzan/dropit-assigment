@@ -1,6 +1,5 @@
-import React, { FC, useState, useMemo, useReducer } from "react";
-import styled from "styled-components";
-import rootReducer from "../../reducers/root.reducer"
+import { FC, useState, useMemo } from "react";
+import {useDispatch} from "react-redux";
 
 import useCatalog from "../../modules/catalog/useCatalog";
 
@@ -13,40 +12,37 @@ import Select, { SelectChangeEvent } from '@mui/material/Select';
 
 const SelectInput: FC = () => {
 
-    const [state, dispatch] = useReducer(rootReducer, {})
-    
+    const dispatch  = useDispatch();
+
     const { products } = useCatalog();
 
     const [categories, setCategories] = useState([...new Set(products.map(({category}) => category))]);  
     const [inputCategory, setInputCategory] = useState('')
 
     const handleCategories = (e: SelectChangeEvent) => {
-        console.log(e.target.value);
         setInputCategory(e.target.value);
-        const category: any = [products.filter((product) => product.category === e.target.value )];
-        console.log(category);
-        dispatch({type: 'SELECT_CATEGORY', category: category });
-      }
+        const category: any = products.filter((product) => product.category === e.target.value);
+        dispatch({type: 'SELECT_CATEGORY', category: category });        
+    }
 
     useMemo(
         () => {
             setCategories([...new Set(products.map(({category}) => category))]);
-            console.log(state)
-        },[products, state]
+        },[products]
     )
 
     return(
         <Box sx={{ minWidth: 120 }}>
-            <FormControl sx={{ m: 1, minWidth: 120 }}>
-                <InputLabel id="demo-simple-select-label">Category</InputLabel>
+            <FormControl sx={{ m: 0, minWidth: 250 }}>
+                <InputLabel id="filter-by-category">Filter by Category</InputLabel>
                 <Select
-                    labelId="demo-simple-select-label"
-                    id="demo-simple-select"
-                    value={inputCategory}
-                    label="Category"
+                    labelId="filter-by-category"
+                    id="category"
+                    value={inputCategory ? inputCategory : ''}
+                    label="Filter by Category"
                     onChange={handleCategories}
                 >
-                    <MenuItem value="">
+                    <MenuItem>
                         <em>all</em>
                     </MenuItem>
                     {categories.map((_category: string) => {

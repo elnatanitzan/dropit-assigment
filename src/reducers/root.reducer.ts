@@ -1,16 +1,54 @@
-const rootReducer = (state: any = {}, action: any) => {
+const init = {
+    products: [],
+    selectedCatalog: [],
+    noResult: false,
+    resultInclude: ''
+}
+
+const rootReducer = (state:any = init, action: any) => {
     
     switch(action.type) {
-      
-        case 'SELECT_CATEGORY': {
+        
+        case 'GET_INITIAL': {
             return {
                 ...state,
-                selectCategory: action.category
+                products: action.products
             }
         }
 
+        case 'SELECT_CATEGORY': {
+            return {
+                ...state,
+                noResult: false,
+                resultInclude: '',
+                selectedCatalog: action.category
+            }
+        }
+
+        case 'SEARCH_RESULT': {
+            return {
+                ...state,
+                noResult: false,
+                selectedCatalog: [...action.result],
+            }
+        }
+
+        case 'NO_RESULT': {
+            return {
+                ...state,
+                noResult: true
+            }
+        }
+        
+        case 'RESULT_INCLUDE': {
+            return {
+                ...state,
+                resultInclude: action.include
+            }
+        }
+        
         default:
-            console.log(state);
+            // console.log(state);
             return state;   
     }
 }
