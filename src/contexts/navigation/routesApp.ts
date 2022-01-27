@@ -5,7 +5,7 @@ interface GetProductProps {
 const routesApp = {
   getHome: () => "/",
   getCatalog: () => `/catalog`,
-  getProduct: ({ productId }: GetProductProps) => `/catalog/${productId}`,
+  getProduct: ( {productId} : GetProductProps) => `/catalog/${productId}`,
   getCart: () => `/cart`,
 };
 

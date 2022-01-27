@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 
-const StyledCatalogView = styled.div`
+const StyledCartView = styled.div`
 .CatalogView__header {
   display: flex;
   align-items: center;
@@ -75,4 +75,4 @@ const StyledCatalogView = styled.div`
   }
 `;
 
-export default StyledCatalogView;
+export default StyledCartView;

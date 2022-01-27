@@ -12,7 +12,7 @@ const IconComponent = ({ d }: Props) => {
       height="24"
       viewBox="0 0 24 24"
     >
-      <path d={d} />
+      <path className="path" d={d} />
     </svg>
   );
 };

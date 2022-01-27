@@ -4,14 +4,13 @@ import {useSelector, useDispatch} from "react-redux";
 import { API } from "../../contexts/api";
 import { CatalogProduct } from "../product/types";
 import useFlag from "../../tools/hooks/useFlag";
-
 import useCatalogTable from "./useCatalogTable";
 
 const useCatalog = () => {
 
   const dispatch  = useDispatch();
 
-  const productsFromReducer = useSelector((state: any) => state.catalog.products)
+  const productsFromReducer = useSelector((state: any) => state.catalog.products);
   
   const [products, setProducts] = useState<CatalogProduct[]>([])
   
@@ -19,7 +18,7 @@ const useCatalog = () => {
 
   const handleAddProductToCart = useCallback((product: CatalogProduct) => {
     dispatch({type: 'ADD_ITEM_TO_CART', product: product});
-  }, [dispatch]);
+  },[dispatch]);
 
   const { columns, getKeyRow } = useCatalogTable({
     onAddItem: handleAddProductToCart,
@@ -31,9 +30,10 @@ const useCatalog = () => {
       .then((res: any) => {
         dispatch({type: 'GET_INITIAL', products: res})
       })
-      .finally(onEndLoading)
+      .finally(onEndLoading);
     },
-    []// eslint-disable-line
+    []
+    // eslint-disable-line
     );
     
     useMemo(

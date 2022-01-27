@@ -1,9 +1,11 @@
 import { Tooltip } from "@mui/material";
-import React, { useCallback, useMemo } from "react";
+import { useCallback, useMemo } from "react";
+import { useHistory } from "react-router-dom";
+import { useDispatch } from "react-redux";
 
+import routesApp from "../../contexts/navigation/routesApp";
 import { GetKeyRow, TableColumn } from "../../tools/ui_components/Table/types";
 import { AddToCartIcon } from "../../tools/icons";
-
 import { CatalogProduct } from "../product/types";
 
 interface Props {
@@ -11,6 +13,17 @@ interface Props {
 }
 
 function useCatalogTable({ onAddItem }: Props) {
+
+  const dispatch  = useDispatch();
+
+  const history = useHistory();
+
+  const handleId = (item: any) => {
+    const productId = item.id;
+    history.push(routesApp.getProduct({productId}));
+    dispatch({type: 'SEND_PRODUCT', item: item.id});
+  }
+
   const columns: TableColumn<CatalogProduct>[] = useMemo(
     () => [
       {
@@ -23,6 +36,8 @@ function useCatalogTable({ onAddItem }: Props) {
         title: "Image",
         renderCell: (item) => (
           <img
+            className="HoverPointer"
+            onClick={() => handleId(item)}
             alt=""
             src={item.image}
             style={{ width: 60, objectFit: "contain" }}
@@ -32,7 +47,7 @@ function useCatalogTable({ onAddItem }: Props) {
       {
         key: "title",
         title: "Title",
-        renderCell: (item) => <a>{item.title}</a>,
+        renderCell: (item) => <a className="HoverPointer" onClick={() => handleId(item)}>{item.title}</a>,
       },
       {
         key: "price",
@@ -43,19 +58,19 @@ function useCatalogTable({ onAddItem }: Props) {
         key: "action",
         title: "",
         renderCell: (item) => (
-          <div style={{ cursor: "pointer" }} onClick={() => onAddItem(item)}>
+          <div className="tooltip" style={{ cursor: "pointer", zIndex: '10' }} onClick={ () => onAddItem(item)}>
             <Tooltip title={"Add to Cart"}>
-              <AddToCartIcon />
+              <AddToCartIcon/>
             </Tooltip>
           </div>
         ),
       },
-    ],
-    [onAddItem]
+    ],[onAddItem]
   );
 
+
   const getKeyRow: GetKeyRow<CatalogProduct> = useCallback(
-    (item) => item.id.toString(),
+      (item) => item.id.toString(),
     []
   );
 

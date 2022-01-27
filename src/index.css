@@ -11,3 +11,7 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+.BackIcon .path {
+  transform: translate(0, 4px) scale(120%);
+}

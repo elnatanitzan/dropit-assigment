@@ -84,7 +84,7 @@ function SearchInput() {
                 return option.title;
             }}
             renderOption={(props, option) => <li {...props}>{option.title}</li>}
-            sx={{ width: 250 }}
+            sx={{ width: '100%', minWidth: 150 }}
             freeSolo
             
             renderInput={(params) => (

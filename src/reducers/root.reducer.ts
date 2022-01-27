@@ -2,7 +2,7 @@ const init = {
     products: [],
     selectedCatalog: [],
     noResult: false,
-    resultInclude: ''
+    resultInclude: '',
 }
 
 const rootReducer = (state:any = init, action: any) => {
@@ -44,6 +44,13 @@ const rootReducer = (state:any = init, action: any) => {
             return {
                 ...state,
                 resultInclude: action.include
+            }
+        }
+
+        case 'SEND_PRODUCT': {
+            return {
+                ...state,
+                productPage: action.item
             }
         }
         

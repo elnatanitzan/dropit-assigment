@@ -3,7 +3,6 @@ import {useDispatch} from "react-redux";
 
 import useCatalog from "../../modules/catalog/useCatalog";
 
-import Box from '@mui/material/Box';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
@@ -34,24 +33,22 @@ function SortInput() {
 
     }
     return (
-        <Box sx={{ minWidth: 120 }}>
-            <FormControl sx={{ m: 0, minWidth: 250 }}>
-                <InputLabel id="sort-by-price">Sort by Price</InputLabel>
-                <Select
-                    labelId="sort-by-price"
-                    id="sort-price"
-                    value={inputCategory ? inputCategory : ''}
-                    label="Sort by Price"
-                    onChange={handleSorting}
-                >
-                    <MenuItem>
-                        <em>no sorting</em>
-                        </MenuItem>
-                    <MenuItem key="low" value="low">Low to High</MenuItem>
-                    <MenuItem key="higth" value="higth">Higth to Low</MenuItem>      
-                </Select>
-            </FormControl>
-        </Box>
+        <FormControl sx={{ m: 0, minWidth: 150, width: '100%' }}>
+            <InputLabel id="sort-by-price">Sort by Price</InputLabel>
+            <Select
+                labelId="sort-by-price"
+                id="sort-price"
+                value={inputCategory ? inputCategory : ''}
+                label="Sort by Price"
+                onChange={handleSorting}
+            >
+                <MenuItem>
+                    <em>no sorting</em>
+                    </MenuItem>
+                <MenuItem key="low" value="low">Low to High</MenuItem>
+                <MenuItem key="higth" value="higth">Higth to Low</MenuItem>      
+            </Select>
+        </FormControl>
   )
 }
 

@@ -1,11 +1,10 @@
 const init = {
-
+    
 }
 
 const cartReducer = (state: any = init, action: any) => {
     switch(action.type) {
         case 'ADD_ITEM_TO_CART': {
-            console.log('add: ', state.items)
             if (!state.items) {
                 return {
                     ...state,
@@ -18,6 +17,7 @@ const cartReducer = (state: any = init, action: any) => {
                 }
             }
         }
+        
         default:
             return state;
     }

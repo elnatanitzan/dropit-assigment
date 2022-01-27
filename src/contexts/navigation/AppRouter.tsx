@@ -1,8 +1,9 @@
-import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 import HomePage from "./pages/HomePage";
 import CatalogPage from "./pages/CatalogPage";
+import ProductPage from "./pages/ProductPage";
+import CartPage from "./pages/CartPage";
 
 import pathsApp from "./pathsApp";
 
@@ -13,10 +14,18 @@ const AppRouter = () => (
         <HomePage />
       </Route>
 
-      <Route path={pathsApp.catalog}>
+      <Route exact path={pathsApp.catalog}>
         <CatalogPage />
       </Route>
-    </Switch>
+
+      <Route path={pathsApp.product}>
+        <ProductPage />
+      </Route>
+
+      <Route path={pathsApp.cart}>
+        <CartPage />
+      </Route>
+    </Switch> 
   </Router>
 );
 

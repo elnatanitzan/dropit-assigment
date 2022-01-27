@@ -6,6 +6,18 @@ import AppRouter from "./contexts/navigation/AppRouter";
 import "./index.css";
 
 const App = () => {
+  
+  const saveToLocalStorage = (state: any) => {
+    try {
+      localStorage.setItem('state', JSON.stringify(state));
+    } catch (e) {
+      console.error(e);
+    }
+  };
+  
+  store.subscribe(() => {
+    saveToLocalStorage(store.getState());
+  });
 
   return (
     <Provider store={store}>

@@ -3,7 +3,6 @@ import {useDispatch} from "react-redux";
 
 import useCatalog from "../../modules/catalog/useCatalog";
 
-import Box from '@mui/material/Box';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
@@ -32,28 +31,26 @@ const SelectInput: FC = () => {
     )
 
     return(
-        <Box sx={{ minWidth: 120 }}>
-            <FormControl sx={{ m: 0, minWidth: 250 }}>
-                <InputLabel id="filter-by-category">Filter by Category</InputLabel>
-                <Select
-                    labelId="filter-by-category"
-                    id="category"
-                    value={inputCategory ? inputCategory : ''}
-                    label="Filter by Category"
-                    onChange={handleCategories}
-                >
-                    <MenuItem>
-                        <em>all</em>
-                    </MenuItem>
-                    {categories.map((_category: string) => {
-                        return (
-                            <MenuItem key={_category} value={_category}>{_category}</MenuItem>
-                        )
-                    })}
-                    
-                </Select>
-            </FormControl>
-        </Box>
+        <FormControl sx={{ m: 0, width: '100%', minWidth: 150 }}>
+            <InputLabel id="filter-by-category">Filter by Category</InputLabel>
+            <Select
+                labelId="filter-by-category"
+                id="category"
+                value={inputCategory ? inputCategory : ''}
+                label="Filter by Category"
+                onChange={handleCategories}
+            >
+                <MenuItem>
+                    <em>all</em>
+                </MenuItem>
+                {categories.map((_category: string) => {
+                    return (
+                        <MenuItem key={_category} value={_category}>{_category}</MenuItem>
+                    )
+                })}
+                
+            </Select>
+        </FormControl>
     );
 };
 
