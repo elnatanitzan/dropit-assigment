@@ -8,6 +8,7 @@ import { Table } from "../../tools/ui_components";
 import LoginInput from "../../tools/ui_components/LoginInput";
 import useCart from "./useCart";
 import CheckoutSnackbars from "../../tools/ui_components/SnackBar";
+import routesApp from "../../contexts/navigation/routesApp";
 
 
 const CartView = () => {
@@ -47,7 +48,12 @@ const CartView = () => {
       <Table columns={columns} data={products} getKeyRow={getKeyRow}/>
       
     </div>
-    ) : ( <h1 style={{textAlign: 'center'}}>Cart Empty</h1> )
+    ) : (
+      <div style={{textAlign: 'center'}}>
+        <h1>Cart Empty</h1>
+        <h2>Go to the <a style={{textDecoration: 'underline', cursor: 'pointer'}} onClick={() => history.push(routesApp.getCatalog())}>catalog</a> to add products</h2>
+      </div>
+    )
     }
   </StyledCartView>
   )
