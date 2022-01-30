@@ -1,0 +1,21 @@
+{
+  "files": {
+    "main.css": "/static/css/main.ee4e8a0c.chunk.css",
+    "main.js": "/static/js/main.f4a093ec.chunk.js",
+    "main.js.map": "/static/js/main.f4a093ec.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.0eaff721.js",
+    "runtime-main.js.map": "/static/js/runtime-main.0eaff721.js.map",
+    "static/js/2.fa706b18.chunk.js": "/static/js/2.fa706b18.chunk.js",
+    "static/js/2.fa706b18.chunk.js.map": "/static/js/2.fa706b18.chunk.js.map",
+    "index.html": "/index.html",
+    "static/css/main.ee4e8a0c.chunk.css.map": "/static/css/main.ee4e8a0c.chunk.css.map",
+    "static/js/2.fa706b18.chunk.js.LICENSE.txt": "/static/js/2.fa706b18.chunk.js.LICENSE.txt",
+    "static/media/logo-dropit-business.9cdfc01d.svg": "/static/media/logo-dropit-business.9cdfc01d.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.0eaff721.js",
+    "static/js/2.fa706b18.chunk.js",
+    "static/css/main.ee4e8a0c.chunk.css",
+    "static/js/main.f4a093ec.chunk.js"
+  ]
+}
