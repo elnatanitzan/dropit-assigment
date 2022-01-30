@@ -63,17 +63,7 @@ function useCartTable({ onAddItem }: Props) {
         title: "Total price",
         renderCell: (item) => <a>{item.totalPrice}</a>,
       },
-      // {
-      //   key: "action",
-      //   title: "",
-      //   renderCell: (item) => (
-      //     <div className="tooltip" style={{ cursor: "pointer", zIndex: '10' }} onClick={ () => onAddItem(item)}>
-      //       <Tooltip title={"Add to Cart"}>
-      //         <AddToCartIcon/>
-      //       </Tooltip>
-      //     </div>
-      //   ),
-      // },
+     
     ],[onAddItem]
   );
 

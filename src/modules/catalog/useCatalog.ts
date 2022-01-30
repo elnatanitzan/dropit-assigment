@@ -11,11 +11,11 @@ const useCatalog = () => {
   const dispatch  = useDispatch();
 
   const productsFromReducer = useSelector((state: any) => state.catalog.products);
-  const cartProducts = useSelector((state: any) => state.cart.items);
+  // const cartProducts = useSelector((state: any) => state.cart.items);
 
   const [products, setProducts] = useState<CatalogProduct[]>([])
   
-  const [isLoading, onStartLoading, onEndLoading] = useFlag(true);
+  const [isLoading, onEndLoading] = useFlag(true);
 
   const handleAddProductToCart = useCallback((product: CatalogProduct) => {
     dispatch({type: 'ADD_ITEM_TO_CART', product: product});

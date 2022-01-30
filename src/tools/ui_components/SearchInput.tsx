@@ -2,7 +2,6 @@ import {useState, useMemo} from 'react';
 import {useSelector, useDispatch} from "react-redux";
 import TextField from '@mui/material/TextField';
 import Autocomplete, { createFilterOptions } from '@mui/material/Autocomplete';
-import { type } from 'os';
 
 interface NameOptionType {
     inputValue?: string;

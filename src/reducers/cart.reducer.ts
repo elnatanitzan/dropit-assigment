@@ -1,5 +1,7 @@
 const init = {
     items: [],
+    username: '',
+    login: false,
 }
 
 export const sumItems = (items: any[]) => {
@@ -33,22 +35,22 @@ const cartReducer = (state: any = init, action: any) => {
             }
         }
 
-        case "INCREASE":
-            state.items[state.items.findIndex((item: { id: number; }) => item.id === action.payload.id)].quantity++
+        case 'USERNAME': {
             return {
                 ...state,
-                ...sumItems(state.items),
-                items: [...state.items]
+                username: action.username,
+                login: !state.login
             }
-            
-        case "DECREASE":
-            state.items[state.items.findIndex((item: { id: number; }) => item.id === action.payload.id)].quantity--
-            return {
-                ...state,
-                ...sumItems(state.items),
-                items: [...state.items]
-            }
+        }
         
+        case 'LOGOUT': {
+            return {
+                ...state,
+                username: '',
+                login: !state.login
+            }
+        }
+
         default:
             return state;
     }

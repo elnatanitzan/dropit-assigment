@@ -32,13 +32,12 @@ const StyledCartView = styled.div`
   }
   
   .Second__header {
-    // width: 100%;
     display: flex;
-    justify-content: space-between;
     margin: 0;
     
     
     .Filter__container {
+      justify-content: space-between;
       padding: 0 24px;
       width: 100%;
       display: flex;
