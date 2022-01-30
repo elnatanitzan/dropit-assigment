@@ -1,11 +1,12 @@
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+
 import {
   Paper,
   Table as MaterialTable,
   TableBody,
   TableContainer,
   TableHead,
-  Button
+  Button,
 } from "@mui/material";
 
 import TableCell from "./components/TableCell";
@@ -19,14 +20,16 @@ interface Props<Item> {
   getKeyRow: GetKeyRow<Item>;
 }
 
+
 function Table<Item>({ data, columns, getKeyRow, }: Props<Item>) {
 
   const login = useSelector((state: any) => state.cart.login)
+  const dispatch  = useDispatch();
 
   const { total, itemCount } = useCart();
 
   const handleCheckout = () => {
-    alert('Purchase completed successfully!')
+    dispatch({ type: 'CHECKOUT' })
   }
 
   return (

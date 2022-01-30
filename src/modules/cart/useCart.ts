@@ -2,7 +2,6 @@ import { useCallback, useState, useMemo, useEffect } from "react";
 import {useSelector, useDispatch} from "react-redux";
 
 import { CartProduct } from "../product/types";
-import useFlag from "../../tools/hooks/useFlag";
 import useCartTable from "./useCartTable";
 import { sumItems } from "../../reducers/cart.reducer";
 
@@ -11,6 +10,7 @@ const useCart = () => {
   const dispatch  = useDispatch();
 
   const cartProductsFromReducer = useSelector((state: any) => state.cart.items);
+  const Snackbar = useSelector((state: any) => state.cart.openSnackBar);
   
   const [products, setProducts] = useState<CartProduct[]>([])
   
@@ -27,10 +27,9 @@ const useCart = () => {
 
   useEffect(
     () => {
-      
+      if (Snackbar) dispatch({type: 'CLOSE_SNACK'});
     },
-    []
-    // eslint-disable-line
+    []// eslint-disable-line
     );
     
     useMemo(

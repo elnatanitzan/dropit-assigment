@@ -11,7 +11,6 @@ const useCatalog = () => {
   const dispatch  = useDispatch();
 
   const productsFromReducer = useSelector((state: any) => state.catalog.products);
-  // const cartProducts = useSelector((state: any) => state.cart.items);
 
   const [products, setProducts] = useState<CatalogProduct[]>([])
   
@@ -33,8 +32,7 @@ const useCatalog = () => {
       })
       .finally(onEndLoading);
     },
-    []
-    // eslint-disable-line
+    []// eslint-disable-line
     );
     
     useMemo(

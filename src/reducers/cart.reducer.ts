@@ -2,6 +2,7 @@ const init = {
     items: [],
     username: '',
     login: false,
+    openSnackBar: false
 }
 
 export const sumItems = (items: any[]) => {
@@ -31,7 +32,7 @@ const cartReducer = (state: any = init, action: any) => {
                 ...state,
                 ...sumItems(state.items),
                 items: [...state.items],
-                // total: sumItems.total
+                openSnackBar: false
             }
         }
 
@@ -48,6 +49,21 @@ const cartReducer = (state: any = init, action: any) => {
                 ...state,
                 username: '',
                 login: !state.login
+            }
+        }
+
+        case 'CHECKOUT': {
+            return {
+                ...state,
+                openSnackBar: true,
+                items: [],
+            }
+        }
+
+        case 'CLOSE_SNACK': {
+            return {
+                ...state,
+                openSnackBar: false
             }
         }
 

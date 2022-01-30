@@ -7,6 +7,7 @@ import { BackIcon } from '../../tools/icons/IconBack';
 import { Table } from "../../tools/ui_components";
 import LoginInput from "../../tools/ui_components/LoginInput";
 import useCart from "./useCart";
+import CheckoutSnackbars from "../../tools/ui_components/SnackBar";
 
 
 const CartView = () => {
@@ -16,7 +17,6 @@ const CartView = () => {
   const username = useSelector((state: any) => state.cart.username)
 
   const [dispalyUsername, setDisplayUsername] = useState<any>('')
- 
 
   const { products, columns, getKeyRow } = useCart();
 
@@ -41,10 +41,14 @@ const CartView = () => {
         </div>
       </div>
       
+    <CheckoutSnackbars />
+    { products.length > 0 ? (
     <div className="CatalogView__grid">
       <Table columns={columns} data={products} getKeyRow={getKeyRow}/>
+      
     </div>
-
+    ) : ( <h1 style={{textAlign: 'center'}}>Cart Empty</h1> )
+    }
   </StyledCartView>
   )
 }
