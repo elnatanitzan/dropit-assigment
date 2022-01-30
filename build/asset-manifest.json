@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/dropit-assigment/static/css/main.ee4e8a0c.chunk.css",
-    "main.js": "/dropit-assigment/static/js/main.f4a093ec.chunk.js",
-    "main.js.map": "/dropit-assigment/static/js/main.f4a093ec.chunk.js.map",
+    "main.js": "/dropit-assigment/static/js/main.e60d590e.chunk.js",
+    "main.js.map": "/dropit-assigment/static/js/main.e60d590e.chunk.js.map",
     "runtime-main.js": "/dropit-assigment/static/js/runtime-main.3d44ebba.js",
     "runtime-main.js.map": "/dropit-assigment/static/js/runtime-main.3d44ebba.js.map",
     "static/js/2.c96118b2.chunk.js": "/dropit-assigment/static/js/2.c96118b2.chunk.js",
@@ -16,6 +16,6 @@
     "static/js/runtime-main.3d44ebba.js",
     "static/js/2.c96118b2.chunk.js",
     "static/css/main.ee4e8a0c.chunk.css",
-    "static/js/main.f4a093ec.chunk.js"
+    "static/js/main.e60d590e.chunk.js"
   ]
 }
