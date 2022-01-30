@@ -15,7 +15,7 @@ const useCatalog = () => {
 
   const [products, setProducts] = useState<CatalogProduct[]>([])
   
-  const [isLoading, onEndLoading] = useFlag(true);
+  const [isLoading, onStartLoading, onEndLoading] = useFlag(true);
 
   const handleAddProductToCart = useCallback((product: CatalogProduct) => {
     dispatch({type: 'ADD_ITEM_TO_CART', product: product});
