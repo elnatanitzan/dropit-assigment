@@ -2,7 +2,7 @@
 
 import { createStore, applyMiddleware, combineReducers, compose } from 'redux';
 import thunk from 'redux-thunk';
-import rootReducer from './root.reducer';
+import rootReducer from './catalog.reducer';
 import cartReducer from './cart.reducer';
 
 

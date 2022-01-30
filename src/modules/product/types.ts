@@ -14,3 +14,8 @@ export interface ProductDetails extends CatalogProduct {
   };
 }
 
+export interface CartProduct extends CatalogProduct {
+  quantity: number;
+  totalPrice: number; 
+}
+

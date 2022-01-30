@@ -6,6 +6,7 @@ import StyledProductView from './StyledProductView';
 import { BackIcon } from '../../tools/icons/IconBack';
 import { AddToCartIcon } from '../../tools/icons/IconAddToCart';
 import { CartIcon } from '../../tools/icons/IconCart';
+import pathsApp from "../../contexts/navigation/pathsApp";
 
 import { styled } from '@mui/material/styles';
 import Card from '@mui/material/Card';
@@ -59,7 +60,7 @@ const ProductView = () => {
         <div className="ProductView__header">
           <div className="ProductView__header_text">product Page</div>
           <div className="Filter__container">
-            <div className="CartIcon">
+            <div className="CartIcon" onClick={() => history.push(pathsApp.cart)}>
               <CartIcon />
             </div>
             <div className="BackIcon" onClick={() => history.goBack()}>

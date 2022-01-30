@@ -11,7 +11,8 @@ const useCatalog = () => {
   const dispatch  = useDispatch();
 
   const productsFromReducer = useSelector((state: any) => state.catalog.products);
-  
+  const cartProducts = useSelector((state: any) => state.cart.items);
+
   const [products, setProducts] = useState<CatalogProduct[]>([])
   
   const [isLoading, onStartLoading, onEndLoading] = useFlag(true);

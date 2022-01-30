@@ -1,7 +1,10 @@
 import { useState, useMemo} from "react";
-import {useSelector} from "react-redux";
+import {useSelector} from "react-redux"
+import { useHistory } from "react-router-dom";
+
 import { LoadingSpinner, Table } from "../../tools/ui_components";
 import { CartIcon } from "../../tools/icons";
+import pathsApp from "../../contexts/navigation/pathsApp";
 
 import StyledCatalogView from "./StyledCatalogView";
 import SelectInput from "../../tools/ui_components/SelectInput";
@@ -10,8 +13,9 @@ import SortInput from "../../tools/ui_components/SortInput";
 import useCatalog from "./useCatalog";
 
 
-
 const CatalogView = () => {
+
+  const history = useHistory();
 
   const selectedCatalog = useSelector((state: any) => state.catalog.selectedCatalog)
   const resultEmpty = useSelector((state: any) => state.catalog.noResult)
@@ -31,7 +35,7 @@ const CatalogView = () => {
     <StyledCatalogView>
       <div className="CatalogView__header">
         <div className="CatalogView__header_text">Catalog Page</div>
-        <div className="CartIcon">
+        <div className="CartIcon" onClick={() => history.push(pathsApp.cart)}>
           <CartIcon />
         </div>
       </div>

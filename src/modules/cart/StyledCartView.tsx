@@ -14,9 +14,20 @@ const StyledCartView = styled.div`
     font-size: 24px;
     font-weight: bold;
   }
-  .CartIcon {
-    svg { height: 48px; width: 48px;}
-    margin-right: 24px;
+  .BackIcon {
+    svg {
+      transform: rotate(180deg);
+      height: 60px; width: 60px;
+      dispaly: flex;
+      justify-content: center;
+      cursor: pointer;
+
+      &: hover {
+        fill: #707070;
+        transform: scale(101%) rotate(180deg);
+        transition: scale .2s ease;
+      }
+    }
   }
   }
   
@@ -45,11 +56,6 @@ const StyledCartView = styled.div`
    
   }
   
-  .ResultInfo {
-    text-align: center;
-    
-    &.red { color: red; }
-  }
   
   .CatalogView__grid {
     margin: 24px;
